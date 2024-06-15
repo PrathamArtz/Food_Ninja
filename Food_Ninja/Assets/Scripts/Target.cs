@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Target : MonoBehaviour
 {
+    private GameManager _gameManager;
+
     private Rigidbody _itemsRB;
 
     private float _torque = 10f;
@@ -17,6 +20,7 @@ public class Target : MonoBehaviour
     private void Start()
     {
         _itemsRB = GetComponent<Rigidbody>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         _itemsRB.AddForce(RandomForce(), ForceMode.Impulse);
         _itemsRB.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -43,6 +47,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        _gameManager.UpdateScore(5);
     }
 
     private void OnTriggerEnter(Collider other)
