@@ -17,6 +17,7 @@ public class Target : MonoBehaviour
     private float _ySpawnPos = -4;
     [SerializeField]
     private int pointValue;
+    public ParticleSystem _explosionParticle;
 
     private void Start()
     {
@@ -48,6 +49,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
         _gameManager.UpdateScore(pointValue);
     }
 
