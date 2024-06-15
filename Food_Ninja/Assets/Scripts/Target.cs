@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Rigidbody _itemsRB;
 
-    // Update is called once per frame
-    void Update()
+    
+
+    private void Start()
     {
-        
+        _itemsRB = GetComponent<Rigidbody>();
+
+        _itemsRB.AddForce(Vector3.up * Random.Range(12f, 16f), ForceMode.Impulse);
+        _itemsRB.AddTorque(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10), ForceMode.Impulse);
+
+        transform.position = new Vector3(Random.Range(-4, 4), -6, 0); 
     }
 }
