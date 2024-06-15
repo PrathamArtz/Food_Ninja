@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Target : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class Target : MonoBehaviour
     private float _maxSpeed = 16f;
     private float _minSpeed = 12.0f;
     private float _XRange = 4;
-    private float _ySpawnPos = -6;
+    private float _ySpawnPos = -4;
 
     private void Start()
     {
@@ -37,4 +39,15 @@ public class Target : MonoBehaviour
         return 
             new Vector3(Random.Range(-_XRange, _XRange), _ySpawnPos, 0);
     }
+
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
+
 }

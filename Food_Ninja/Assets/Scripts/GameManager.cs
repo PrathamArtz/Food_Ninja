@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> _targets;
-    public float spawnrate = 1.0f;
+
+    private float spawnrate = 1.0f;
     
 
    void Start()
