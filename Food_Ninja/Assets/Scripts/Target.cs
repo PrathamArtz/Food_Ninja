@@ -6,15 +6,35 @@ public class Target : MonoBehaviour
 {
     private Rigidbody _itemsRB;
 
-    
+    private float _torque = 10f;
+    private float _maxSpeed = 16f;
+    private float _minSpeed = 12.0f;
+    private float _XRange = 4;
+    private float _ySpawnPos = -6;
 
     private void Start()
     {
         _itemsRB = GetComponent<Rigidbody>();
 
-        _itemsRB.AddForce(Vector3.up * Random.Range(12f, 16f), ForceMode.Impulse);
-        _itemsRB.AddTorque(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10), ForceMode.Impulse);
+        _itemsRB.AddForce(RandomForce(), ForceMode.Impulse);
+        _itemsRB.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
 
-        transform.position = new Vector3(Random.Range(-4, 4), -6, 0); 
+        transform.position = RandomSpawnpos();
+    }
+
+    Vector3 RandomForce()
+    {
+        return 
+            Vector3.up * Random.Range(_minSpeed, _maxSpeed);
+    }
+    float RandomTorque()
+    {
+        return 
+            Random.Range(-_torque, _torque);
+    }
+    Vector3 RandomSpawnpos()
+    {
+        return 
+            new Vector3(Random.Range(-_XRange, _XRange), _ySpawnPos, 0);
     }
 }
