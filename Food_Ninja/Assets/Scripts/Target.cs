@@ -8,7 +8,6 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Target : MonoBehaviour
 {
     private GameManager _gameManager;
-
     private Rigidbody _itemsRB;
 
     private float _torque = 10f;
@@ -16,6 +15,8 @@ public class Target : MonoBehaviour
     private float _minSpeed = 12.0f;
     private float _XRange = 4;
     private float _ySpawnPos = -4;
+    [SerializeField]
+    private int pointValue;
 
     private void Start()
     {
@@ -47,7 +48,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
-        _gameManager.UpdateScore(5);
+        _gameManager.UpdateScore(pointValue);
     }
 
     private void OnTriggerEnter(Collider other)
