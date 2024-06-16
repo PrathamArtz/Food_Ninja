@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
     private int score;
 
     public List<GameObject> _targets;
@@ -36,5 +37,10 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
     }
 }
