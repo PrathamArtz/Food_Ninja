@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public Button restartButton;
     public bool isGameActive;
     private int score;
 
@@ -44,6 +47,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
         isGameActive = false;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
