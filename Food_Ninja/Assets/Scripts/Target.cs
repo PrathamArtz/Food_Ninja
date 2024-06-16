@@ -30,6 +30,11 @@ public class Target : MonoBehaviour
         transform.position = RandomSpawnpos();
     }
 
+    private void Update()
+    {
+        
+    }
+
     Vector3 RandomForce()
     {
         return 
@@ -48,9 +53,17 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
-        _gameManager.UpdateScore(pointValue);
+        if (_gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
+            _gameManager.UpdateScore(pointValue);
+        }
+        if (pointValue < 1)
+        {
+            _gameManager.isGameActive = false;
+            _gameManager.GameOver();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
