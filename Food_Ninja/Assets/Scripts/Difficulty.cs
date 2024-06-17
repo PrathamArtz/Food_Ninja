@@ -7,6 +7,7 @@ public class Difficulty : MonoBehaviour
 {
     private Button _button;
     private GameManager _gameManager;
+    public int difficulty;
 
 
     void Start()
@@ -23,7 +24,7 @@ public class Difficulty : MonoBehaviour
     }
     public void SetDifficulty()
     {
-        _gameManager.StartGame();
+        _gameManager.StartGame(difficulty);
         Debug.Log(gameObject.name + " was Clicked.");
     }
 }
