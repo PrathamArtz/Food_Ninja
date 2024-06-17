@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
+    public GameObject _titleScreen;
     public bool isGameActive;
     private int score;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        _titleScreen.gameObject.SetActive(false);
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         score = 0;
